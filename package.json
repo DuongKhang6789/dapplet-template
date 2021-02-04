@@ -1,14 +1,19 @@
 {
-  "name": "dapplet-template.dapplet-base.eth",
+  "name": "example4.dapplet-base.eth",
   "version": "0.2.0",
-  "description": "Template project of dapplet",
+  "description": "Ex04: Overlays",
   "main": "lib/index.js",
   "scripts": {
+    "postinstall": "cd overlayWithReact && npm i",
     "start": "rollup -w --config rollup.config.js",
     "build": "rollup --config rollup.config.js",
     "prettify": "npx prettier --write .",
     "lint": "npx eslint ."
   },
+  "cacheDirectories": [
+    "node_modules",
+    "overlayWithReact/node_modules"
+  ],
   "author": "Dapplets Project",
   "license": "MIT",
   "devDependencies": {
@@ -20,6 +25,7 @@
     "@rollup/plugin-typescript": "^8.1.1",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "concurrently": "^6.0.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.1.0",

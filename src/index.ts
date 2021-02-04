@@ -1,21 +1,26 @@
 import {} from '@dapplets/dapplet-extension';
-import EXAMPLE_IMG from './icons/dapplet-icon.png';
+import EXAMPLE_IMG from './icons/ex04.png';
 
 @Injectable
 export default class TwitterFeature {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any,  @typescript-eslint/explicit-module-boundary-types
   @Inject('twitter-adapter.dapplet-base.eth') public adapter: any;
-  
+
   activate() {
     const { button } = this.adapter.exports;
     this.adapter.attachConfig({
-      POST: () =>
+      POST: (ctx) =>
         button({
           initial: 'DEFAULT',
           DEFAULT: {
-            label: 'Injected Button',
+            label: 'Open overlay',
             img: EXAMPLE_IMG,
-            exec: () => alert('Hello, World!'),
+            // LP:  1. Implement overlay opening on button click
+            //      2. To get current overlay use `Core.overlay({ name: string, title: string })`.
+            //      3. Send some data to overlay and get collback 'onClick'
+            //      4. In callback increse current counter and add received message to label
+
+            // LP end
           },
         }),
     });
