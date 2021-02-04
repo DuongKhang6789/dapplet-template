@@ -19,7 +19,15 @@ export default class TwitterFeature {
             //      2. To get current overlay use `Core.overlay({ name: string, title: string })`.
             //      3. Send some data to overlay and get collback 'onClick'
             //      4. In callback increse current counter and add received message to label
-
+            exec: async (_, me) => {
+              const overlay = Core.overlay({ name: 'example-04-overlay', title: 'Example 4' });
+              overlay.sendAndListen('data', 'Hello, World!', {
+                onClick: (op, { message }) => {
+                  ctx.counter = ctx.counter === undefined ? 1 : ctx.counter + 1;
+                  me.label = `${message} ${ctx.counter}`;
+                },
+              });
+            },
             // LP end
           },
         }),
